@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -16,7 +16,9 @@
   "dependencies": {
     "@capacitor/android": "^4.7.3",
     "@capacitor/core": "^4.7.3",
+    "@capacitor/haptics": "^4.1.0",
     "@capacitor/ios": "^4.7.3",
+    "@capacitor/status-bar": "^4.1.1",
     "pinia": "^2.0.32",
     "vant": "^4.1.2",
     "vue": "^3.2.47",

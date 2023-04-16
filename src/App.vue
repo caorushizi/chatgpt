@@ -1,21 +1,37 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { StatusBar, Style } from '@capacitor/status-bar'
+import { RouterView } from 'vue-router'
+import { Tabbar, TabbarItem, NavBar } from 'vant'
+import { ref } from 'vue'
+
+const active = ref('/')
+
+const onChange = async () => {
+  await Haptics.impact({ style: ImpactStyle.Light })
+}
+
+StatusBar.setOverlaysWebView({ overlay: false })
+const init = async () => {
+  const info = await StatusBar.getInfo()
+  console.log(info)
+  await StatusBar.setStyle({ style: Style.Light })
+}
+
+init()
 </script>
 
 <template>
-  <header>
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <NavBar title="Vant" />
 
   <RouterView />
+
+  <Tabbar v-model="active" @change="onChange">
+    <TabbarItem replace to="/" icon="home-o">Home</TabbarItem>
+    <TabbarItem replace to="/about" icon="search">Search</TabbarItem>
+    <TabbarItem replace to="/about" icon="friends-o">Friends</TabbarItem>
+    <TabbarItem replace to="/about" icon="setting-o">Setting</TabbarItem>
+  </Tabbar>
 </template>
 
 <style scoped></style>
