@@ -10,8 +10,6 @@ const onChange = async () => {
 
 StatusBar.setOverlaysWebView({ overlay: false })
 const init = async () => {
-  const info = await StatusBar.getInfo()
-  console.log(info)
   await StatusBar.setStyle({ style: Style.Light })
 }
 
@@ -25,8 +23,7 @@ init()
 
   <Tabbar route @change="onChange">
     <TabbarItem replace to="/" icon="home-o">Home</TabbarItem>
-    <TabbarItem replace to="/about" icon="search">Search</TabbarItem>
-    <TabbarItem replace to="/about" icon="friends-o">Friends</TabbarItem>
+    <TabbarItem replace to="/list" icon="search">Search</TabbarItem>
     <TabbarItem replace to="/about" icon="setting-o">Setting</TabbarItem>
   </Tabbar>
 </template>
